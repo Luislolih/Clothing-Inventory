@@ -55,11 +55,16 @@ const ThirdForm = () => {
 
     return (
         <form className="formMargin" onSubmit={handleSubmit}>
-            <ImageUpload value={urlImage} onChange={handleUrl} />
-            <div className="flex justify-center">
-                <button type="submit" className="button bg-red-500">
-                    Crear producto
-                </button>
+            <div className="flex flex-col gap-5 lg:gap-10">
+                <ImageUpload value={urlImage} onChange={handleUrl} />
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="button bg-red-500 mb-2 lg:m-0"
+                    >
+                        Crear producto
+                    </button>
+                </div>
             </div>
             <Button
                 className=" bg-defaultColor button"

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .formMargin {
-    @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-full lg:h-screen;
+    @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-full lg:h-screen gap-2 lg:gap-0;
 }
 .formMobileHeight {
     height: calc(100vh - 3rem);
