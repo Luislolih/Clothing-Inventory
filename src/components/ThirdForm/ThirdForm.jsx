@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { ProviderContext } from "../../Context/ProductContext";
-
+import ProductDetail from "../ProductDetail/ProductDetail";
 import Button from "../Button/Button";
 
 const ThirdForm = () => {
+    const [showDetail, setShowDetail] = useState(false);
     const {
         product,
         setProduct,
@@ -31,7 +32,6 @@ const ThirdForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("hiciste submit!!!!");
         const newProduct = {
             name,
             cut,
@@ -49,10 +49,15 @@ const ThirdForm = () => {
         setSizes([]);
         setDescription("");
         setUrlImage("");
+        /////
+        setShowDetail(true);
+        setTimeout(() => {
+            setShowDetail(false);
+        }, 5000);
     };
 
     return (
-        <form className="formMargin" onSubmit={handleSubmit}>
+        <form className="z-0 formMargin relative" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-5 lg:gap-10">
                 <ImageUpload value={urlImage} onChange={handleUrl} />
                 <div className="flex justify-center">
@@ -71,6 +76,10 @@ const ThirdForm = () => {
                 color="blue"
                 type="button"
             />
+
+            {showDetail && (
+                <ProductDetail className="absolute top-0 bottom-0 lg:inset-0 flex justify-center items-center" />
+            )}
         </form>
     );
 };

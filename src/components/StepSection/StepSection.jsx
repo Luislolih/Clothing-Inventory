@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./StepSection.module.css";
-import { useState } from "react";
+
 const StepSection = ({ number, step, title, to }) => {
     return (
         <div className={styles.navLink}>
