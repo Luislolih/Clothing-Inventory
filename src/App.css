@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.formMargin {
+    @apply flex flex-col  px-20 py-12 w-full justify-between h-screen;
+}
+.formContainerTop {
+    @apply flex flex-col justify-between gap-5;
+}
+.button {
+    @apply text-white px-5 py-3 rounded-lg;
+}
