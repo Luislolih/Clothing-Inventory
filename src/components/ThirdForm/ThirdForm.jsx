@@ -60,7 +60,7 @@ const ThirdForm = () => {
                 <div className="flex justify-center">
                     <button
                         type="submit"
-                        className="button bg-red-500 mb-2 lg:m-0"
+                        className="button bg-red-500 mb-5 lg:m-0"
                     >
                         Crear producto
                     </button>
