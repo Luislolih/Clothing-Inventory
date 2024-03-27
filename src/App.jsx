@@ -8,7 +8,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/add" element={<Layout />}>
+                <Route path="/" element={<Layout />}>
                     <Route index element={<FirstForm />} />
                     <Route path="basic-information" element={<FirstForm />} />
                     <Route path="details" element={<SecondForm />} />

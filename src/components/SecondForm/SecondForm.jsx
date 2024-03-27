@@ -54,12 +54,12 @@ const SecondForm = () => {
             </div>
             <div className="flex w-full justify-between mt-5">
                 <Button
-                    to="/add/basic-information"
+                    to="/basic-information"
                     title="Anterior"
                     className=" bg-defaultColor button"
                 />
                 <Button
-                    to="/add/files"
+                    to="/files"
                     title="Siguiente"
                     className=" bg-defaultColor button"
                 />

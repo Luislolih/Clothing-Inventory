@@ -59,7 +59,7 @@ const FirstForm = () => {
             </div>
             <div className="flex w-full justify-end mt-5">
                 <Button
-                    to="/add/details"
+                    to="/details"
                     title="Siguiente"
                     className=" bg-defaultColor button"
                 />

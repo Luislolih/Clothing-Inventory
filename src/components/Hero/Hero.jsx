@@ -5,19 +5,19 @@ const steps = [
         number: "1",
         step: "PASO ",
         title: "INFORMACIÓN BÁSICA",
-        path: "/add/basic-information",
+        path: "/basic-information",
     },
     {
         number: "2",
         step: "PASO ",
         title: "DETALLES",
-        path: "/add/details",
+        path: "/details",
     },
     {
         number: "3",
         step: "PASO ",
         title: "ARCHIVOS",
-        path: "/add/files",
+        path: "/files",
     },
 ];
 
