@@ -51,8 +51,6 @@ const ThirdForm = () => {
         setUrlImage("");
     };
 
-    console.log(product);
-
     return (
         <form className="formMargin" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-5 lg:gap-10">

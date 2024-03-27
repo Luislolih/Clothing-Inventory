@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./StepSection.module.css";
-const StepSection = ({ number, step, title, to, isSelected }) => {
+import { useState } from "react";
+const StepSection = ({ number, step, title, to }) => {
     return (
-        <Link to={to} className="lg:flex lg:items-center lg:gap-5">
-            <div className={styles.number}>{number}</div>
-            <div className="hover:text-gray-300 transition-all duration-75 hidden lg:block">
-                <p className="text-sm hidden lg:block">{step + number}</p>
-                <p>{title}</p>
-            </div>
-        </Link>
+        <div className={styles.navLink}>
+            <NavLink
+                to={to}
+                className={({ isActive }) => (isActive ? styles.isActive : "")}
+            >
+                <p className={styles.number}>{number}</p>
+            </NavLink>
+            <NavLink to={to}>
+                <div className="hover:text-gray-300 transition-all duration-75 hidden lg:block">
+                    <p className="text-sm hidden lg:block">{step + number}</p>
+                    <p>{title}</p>
+                </div>
+            </NavLink>
+        </div>
     );
 };
 

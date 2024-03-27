@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .formMargin {
-    @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-full lg:h-screen gap-2 lg:gap-0;
+    @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-full lg:h-screen gap-2 lg:gap-0 overflow-auto;
 }
 .formMobileHeight {
     height: calc(100vh - 3rem);
@@ -14,4 +14,10 @@
 }
 .button {
     @apply text-white px-5 py-3 rounded-lg;
+}
+.icon {
+    @apply border border-gray-400 hover:border-black w-8 h-8 rounded-sm p-1 cursor-pointer;
+}
+.selectedSection {
+    @apply bg-red-600;
 }

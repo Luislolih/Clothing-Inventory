@@ -1,5 +1,5 @@
 import styles from "./SelectSize.module.css";
-
+import { MdDelete, MdAdd } from "react-icons/md";
 const SelectSize = ({
     title,
     sizes,
@@ -19,11 +19,11 @@ const SelectSize = ({
         handleSizeAndQuantity(sizes[idx]?.name || "", quantity, idx);
     };
     return (
-        <div className="flex flex-col items-start text-lg">
+        <div className="flex flex-col items-start text-lg gap-3 ">
             <label>{title}</label>
 
             {sizes.map((size, idx) => (
-                <div key={idx} className="flex gap-3">
+                <div key={idx} className="flex gap-3 items-center h-12">
                     <select
                         className={styles.select}
                         onChange={(e) => handleSizeChange(e, idx)}
@@ -43,10 +43,13 @@ const SelectSize = ({
                         value={size.quantity}
                     ></input>
 
-                    <button onClick={() => deleteSize(idx)}>Eliminar</button>
+                    <MdDelete
+                        className="icon"
+                        onClick={() => deleteSize(idx)}
+                    />
                 </div>
             ))}
-            <button onClick={addSize}>Agregar Talla</button>
+            <MdAdd className="icon" onClick={addSize} />
         </div>
     );
 };
