@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .formMargin {
-    @apply flex flex-col  px-20 py-12 w-full justify-between h-screen;
+    @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-screen;
 }
 .formContainerTop {
     @apply flex flex-col justify-between gap-5;
