@@ -9,7 +9,7 @@ const ProductDetail = ({ className }) => {
     return (
         <div className={className}>
             <div className="absolute bg-black opacity-75 h-screen w-screen -z-1"></div>
-            <div className=" z-0 flex flex-col h-full items-center bg-defaultColor text-white text-md justify-center w-3/4 lg:w-1/2 gap-3 px-16 py-8 h-auto rounded-lg shadow-md shadow-black">
+            <div className=" z-0 overflow-scroll flex flex-col h-full items-center bg-defaultColor text-white text-md justify-center w-full lg:w-1/2 gap-3 px-16 py-8 h-auto rounded-lg shadow-md shadow-black">
                 <div className="flex items-center gap-2 justify-center">
                     <IoCheckmarkDoneSharp />
                     <h1 className="border-b pb-.5">
