@@ -42,17 +42,18 @@ const ThirdForm = () => {
             urlImage,
         };
         setProduct(newProduct);
-        setName("");
-        setCut("");
-        setCategory("");
-        setPrice("");
-        setSizes([]);
-        setDescription("");
-        setUrlImage("");
+
         /////
         setShowDetail(true);
         setTimeout(() => {
             setShowDetail(false);
+            setName("");
+            setCut("");
+            setCategory("");
+            setPrice("");
+            setSizes([]);
+            setDescription("");
+            setUrlImage("");
         }, 5000);
     };
 
