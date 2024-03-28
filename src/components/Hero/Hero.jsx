@@ -5,19 +5,19 @@ const steps = [
         number: "1",
         step: "PASO ",
         title: "INFORMACIÓN BÁSICA",
-        path: "/basic-information",
+        path: "/add/basic-information",
     },
     {
         number: "2",
         step: "PASO ",
         title: "DETALLES",
-        path: "/details",
+        path: "/add/details",
     },
     {
         number: "3",
         step: "PASO ",
         title: "ARCHIVOS",
-        path: "/files",
+        path: "/add/files",
     },
 ];
 
@@ -32,6 +32,7 @@ const Hero = () => {
                         step={step.step}
                         title={step.title}
                         to={step.path}
+                        stepVisible={true}
                     />
                 ))}
             </aside>

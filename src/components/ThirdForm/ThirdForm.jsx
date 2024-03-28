@@ -72,7 +72,7 @@ const ThirdForm = () => {
             </div>
             <Button
                 className=" bg-defaultColor button"
-                to="/details"
+                to="/add/details"
                 title="Anterior"
                 color="blue"
                 type="button"

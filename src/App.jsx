@@ -4,11 +4,21 @@ import Layout from "./components/Layout/Layout";
 import FirstForm from "./components/FirstForm/FirstForm";
 import SecondForm from "./components/SecondForm/SecondForm";
 import ThirdForm from "./components/ThirdForm/ThirdForm";
+import Home from "./components/views/Home/Home";
+import LayoutInventory from "./components/views/LayoutInventory/LayoutInventory";
+import Inventory from "./components/Inventory/Inventory";
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Home />} />
+
+                <Route path="inventory" element={<LayoutInventory />}>
+                    <Route index element={<Inventory />} />
+                    <Route path=":category" element={<Inventory />} />
+                </Route>
+
+                <Route path="/add" element={<Layout />}>
                     <Route index element={<FirstForm />} />
                     <Route path="basic-information" element={<FirstForm />} />
                     <Route path="details" element={<SecondForm />} />

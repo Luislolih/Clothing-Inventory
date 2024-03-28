@@ -4,9 +4,8 @@ import SelectSize from "../SelectSize/SelectSize";
 import { useContext } from "react";
 import Button from "../Button/Button";
 const SecondForm = () => {
-    const sizesList = ["S", "M", "L", "XL", "Única"];
-    const { sizes, setSizes } = useContext(ProviderContext);
-    const { description, setDescription } = useContext(ProviderContext);
+    const { sizes, setSizes, sizesList, description, setDescription } =
+        useContext(ProviderContext);
 
     const handleSizeAndQuantity = (selectedSize, quantity, idx) => {
         const newSize = { name: selectedSize, quantity: quantity };
@@ -22,7 +21,7 @@ const SecondForm = () => {
     };
 
     const addSize = () => {
-        setSizes([...sizes, { name: "", quantity: 0 }]);
+        setSizes([...sizes, { name: "", quantity: "" }]);
     };
 
     const deleteSize = (idx) => {
@@ -52,14 +51,14 @@ const SecondForm = () => {
                     }
                 />
             </div>
-            <div className="flex w-full justify-between mt-5">
+            <div className="flex w-full justify-between mt-5 ">
                 <Button
-                    to="/basic-information"
+                    to="/add/basic-information"
                     title="Anterior"
                     className=" bg-defaultColor button"
                 />
                 <Button
-                    to="/files"
+                    to="/add/files"
                     title="Siguiente"
                     className=" bg-defaultColor button"
                 />

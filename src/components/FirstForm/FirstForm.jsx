@@ -4,13 +4,19 @@ import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Button from "../Button/Button";
 
-const optionsCorte = ["Clásico", "Manga Larga", "Oversize", "Boxy Fit"];
-const optionsCategoría = ["Polos", "Poleras"];
 const FirstForm = () => {
-    const { name, setName } = useContext(ProviderContext);
-    const { price, setPrice } = useContext(ProviderContext);
-    const { cut, setCut } = useContext(ProviderContext);
-    const { category, setCategory } = useContext(ProviderContext);
+    const {
+        name,
+        setName,
+        price,
+        setPrice,
+        cut,
+        setCut,
+        category,
+        setCategory,
+        categoryList,
+        cutList,
+    } = useContext(ProviderContext);
 
     const handleInputChange = (fieldName, value) => {
         if (fieldName === "name") {
@@ -35,14 +41,14 @@ const FirstForm = () => {
                 />
                 <Select
                     title="Corte"
-                    options={optionsCorte}
+                    options={cutList}
                     value={cut}
                     optionDefault="Selecciona un Corte"
                     onChange={(e) => handleInputChange("cut", e.target.value)}
                 />
                 <Select
                     title="Categoría"
-                    options={optionsCategoría}
+                    options={categoryList.map((category) => category.name)}
                     value={category}
                     optionDefault="Selecciona una Categoría"
                     onChange={(e) =>
@@ -59,7 +65,7 @@ const FirstForm = () => {
             </div>
             <div className="flex w-full justify-end mt-5">
                 <Button
-                    to="/details"
+                    to="/add/details"
                     title="Siguiente"
                     className=" bg-defaultColor button"
                 />

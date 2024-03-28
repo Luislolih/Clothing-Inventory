@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./StepSection.module.css";
 
-const StepSection = ({ number, step, title, to }) => {
+const StepSection = ({ number, step, stepVisible, title, to }) => {
     return (
         <div className={styles.navLink}>
             <NavLink
@@ -12,7 +12,11 @@ const StepSection = ({ number, step, title, to }) => {
             </NavLink>
             <NavLink to={to}>
                 <div className="hover:text-gray-300 transition-all duration-75 hidden lg:block">
-                    <p className="text-sm hidden lg:block">{step + number}</p>
+                    {stepVisible && (
+                        <p className="text-sm hidden lg:block">
+                            {step + number}
+                        </p>
+                    )}
                     <p>{title}</p>
                 </div>
             </NavLink>
