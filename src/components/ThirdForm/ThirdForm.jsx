@@ -3,8 +3,9 @@ import ImageUpload from "../ImageUpload/ImageUpload";
 import { ProviderContext } from "../../Context/ProductContext";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Button from "../Button/Button";
-
+import { v4 as uuidv4 } from "uuid";
 const ThirdForm = () => {
+    const id = uuidv4();
     const [showDetail, setShowDetail] = useState(false);
     const {
         product,
@@ -19,10 +20,14 @@ const ThirdForm = () => {
         setPrice,
         sizes,
         setSizes,
+        sizesRender,
+        setSizesRender,
         description,
         setDescription,
         urlImage,
         setUrlImage,
+        productList,
+        setProductList,
     } = useContext(ProviderContext);
 
     const handleUrl = (e) => {
@@ -32,16 +37,32 @@ const ThirdForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const renderedSizeNames = sizesRender.map((size) => size.name);
+
+        const updatedSizes = sizes.map((size) => {
+            if (size.quantity === 0 && renderedSizeNames.includes(size.name)) {
+                return sizesRender.find(
+                    (renderedSize) => renderedSize.name === size.name
+                );
+            } else {
+                return size;
+            }
+        });
+
+        setSizes(updatedSizes);
+
         const newProduct = {
+            id,
             name,
             cut,
             category,
             price,
-            sizes,
+            sizes: updatedSizes,
             description,
             urlImage,
         };
         setProduct(newProduct);
+        setProductList([...productList, newProduct]);
 
         /////
         setShowDetail(true);
@@ -51,12 +72,34 @@ const ThirdForm = () => {
             setCut("");
             setCategory("");
             setPrice("");
-            setSizes([]);
+            setSizesRender([]);
+            setSizes([
+                {
+                    name: "S",
+                    quantity: 0,
+                },
+                {
+                    name: "M",
+                    quantity: 0,
+                },
+                {
+                    name: "L",
+                    quantity: 0,
+                },
+                {
+                    name: "XL",
+                    quantity: 0,
+                },
+                {
+                    name: "Única",
+                    quantity: 0,
+                },
+            ]);
             setDescription("");
             setUrlImage("");
         }, 5000);
     };
-
+    console.log(product);
     return (
         <form className="z-0 formMargin relative" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-5 lg:gap-10">

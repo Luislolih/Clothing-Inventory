@@ -1,6 +1,0 @@
-.principal {
-    @apply lg:h-screen;
-}
-.aside {
-    @apply flex justify-center lg:justify-start gap-6 shadow-lg px-5 py-5 lg:py-10 bg-defaultColor text-white  lg:flex-col lg:w-80  lg:h-full;
-}

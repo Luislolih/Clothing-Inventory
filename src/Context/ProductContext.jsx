@@ -4,10 +4,12 @@ const ProductContext = ({ children }) => {
     const [product, setProduct] = useState([]);
     const [productList, setProductList] = useState([
         {
-            name: "Polo Skull",
+            id: 1,
+            name: "Polo White",
             cut: "clásico",
             category: "polos",
             price: 50,
+            priceCost: 20,
             sizes: [
                 {
                     name: "S",
@@ -25,15 +27,18 @@ const ProductContext = ({ children }) => {
                     name: "XL",
                     quantity: 40,
                 },
+                { name: "Única", quantity: 50 },
             ],
             description: "Polo de algodón jersey 30/1",
             urlImage: "http://bit.ly/3VAocMN",
         },
         {
-            name: "Polo Skate",
+            id: 2,
+            name: "Polera Rat Train",
             cut: "oversize",
             category: "poleras",
             price: 55,
+            priceCost: 20,
             sizes: [
                 {
                     name: "S",
@@ -51,22 +56,52 @@ const ProductContext = ({ children }) => {
                     name: "XL",
                     quantity: 40,
                 },
+                { name: "Única", quantity: 50 },
             ],
-            description: "Polo de algodón jersey 20/1",
-            urlImage: "http://bit.ly/3VAocMN",
+            description: "Polera de franela 24/1",
+            urlImage: "https://bit.ly/49hyAMA",
+        },
+        {
+            id: 3,
+            name: "Polo Oversize Death",
+            cut: "oversize",
+            category: "polos",
+            price: 50,
+            priceCost: 20,
+            sizes: [
+                {
+                    name: "S",
+                    quantity: 10,
+                },
+                {
+                    name: "M",
+                    quantity: 20,
+                },
+                {
+                    name: "L",
+                    quantity: 30,
+                },
+                {
+                    name: "XL",
+                    quantity: 40,
+                },
+                { name: "Única", quantity: 50 },
+            ],
+            description: "Polo de algodón jersey 30/1",
+            urlImage: "https://bit.ly/3TwPaCq",
         },
     ]);
     const [sizesList, setSizesList] = useState(["S", "M", "L", "XL", "Única"]);
     const [categoryList, setCategoryList] = useState([
         {
-            name: "Polos",
+            name: "polos",
             id: 1,
-            path: "t-shirts",
+            path: "polos",
         },
         {
-            name: "Poleras",
+            name: "poleras",
             id: 2,
-            path: "hoodies",
+            path: "poleras",
         },
     ]);
     const [cutList, setCutList] = useState([
@@ -79,7 +114,30 @@ const ProductContext = ({ children }) => {
     const [cut, setCut] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
-    const [sizes, setSizes] = useState([]);
+    const [sizesRender, setSizesRender] = useState([]);
+    const [sizes, setSizes] = useState([
+        {
+            name: "S",
+            quantity: 0,
+        },
+        {
+            name: "M",
+            quantity: 0,
+        },
+        {
+            name: "L",
+            quantity: 0,
+        },
+        {
+            name: "XL",
+            quantity: 0,
+        },
+        {
+            name: "Única",
+            quantity: 0,
+        },
+    ]);
+
     const [description, setDescription] = useState("");
     const [urlImage, setUrlImage] = useState("");
     return (
@@ -105,10 +163,13 @@ const ProductContext = ({ children }) => {
                 setPrice,
                 sizes,
                 setSizes,
+
                 description,
                 setDescription,
                 urlImage,
                 setUrlImage,
+                sizesRender,
+                setSizesRender,
             }}
         >
             {children}

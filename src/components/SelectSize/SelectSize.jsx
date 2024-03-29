@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styles from "./SelectSize.module.css";
 import { MdDelete, MdAdd } from "react-icons/md";
 const SelectSize = ({
@@ -9,6 +10,13 @@ const SelectSize = ({
     addSize,
     deleteSize,
 }) => {
+    const [activeSizes, setActiveSizes] = useState([]);
+
+    useEffect(() => {
+        const selected = sizes.map((size) => size.name);
+        setActiveSizes(selected);
+    }, [sizes]);
+
     const handleSizeChange = (e, idx) => {
         const selectedSize = e.target.value;
         handleSizeAndQuantity(selectedSize, sizes[idx]?.quantity || 0, idx);
@@ -33,7 +41,12 @@ const SelectSize = ({
                             {optionDefault}
                         </option>
                         {sizesList.map((sizeOption, index) => (
-                            <option key={index}>{sizeOption}</option>
+                            <option
+                                key={index}
+                                disabled={activeSizes.includes(sizeOption)}
+                            >
+                                {sizeOption}{" "}
+                            </option>
                         ))}
                     </select>
                     <input

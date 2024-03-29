@@ -21,3 +21,9 @@
 .selectedSection {
     @apply bg-red-600;
 }
+.principalAside {
+    @apply lg:h-screen;
+}
+.asideMenu {
+    @apply flex justify-center lg:justify-start gap-6 shadow-lg px-5 py-5 lg:py-10 bg-defaultColor text-white  lg:flex-col lg:w-80  lg:h-full;
+}

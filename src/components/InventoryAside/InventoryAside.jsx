@@ -6,8 +6,8 @@ const InventoryAside = () => {
     const { categoryList } = useContext(ProviderContext);
     console.log(categoryList);
     return (
-        <div>
-            <aside>
+        <div className="principalAside">
+            <aside className="asideMenu">
                 {categoryList.map((category) => (
                     <StepSection
                         key={category.id}

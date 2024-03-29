@@ -4,14 +4,21 @@ import SelectSize from "../SelectSize/SelectSize";
 import { useContext } from "react";
 import Button from "../Button/Button";
 const SecondForm = () => {
-    const { sizes, setSizes, sizesList, description, setDescription } =
-        useContext(ProviderContext);
+    const {
+        sizesList,
+        description,
+        setDescription,
+        sizesRender,
+        setSizesRender,
+    } = useContext(ProviderContext);
 
     const handleSizeAndQuantity = (selectedSize, quantity, idx) => {
         const newSize = { name: selectedSize, quantity: quantity };
-        const updatedSizes = [...sizes];
+        const updatedSizes = [...sizesRender];
+
         updatedSizes[idx] = newSize;
-        setSizes(updatedSizes);
+
+        setSizesRender(updatedSizes);
     };
 
     const handleInputChange = (fieldName, value) => {
@@ -21,21 +28,22 @@ const SecondForm = () => {
     };
 
     const addSize = () => {
-        setSizes([...sizes, { name: "", quantity: "" }]);
+        setSizesRender([...sizesRender, { name: "", quantity: 0 }]);
     };
 
     const deleteSize = (idx) => {
-        const copySizes = [...sizes];
+        const copySizes = [...sizesRender];
         copySizes.splice(idx, 1);
-        setSizes(copySizes);
+        setSizesRender(copySizes);
     };
+
     return (
         <div className="formMargin">
             <div className="formContainerTop">
                 <SelectSize
                     title="Tallas"
                     sizesList={sizesList}
-                    sizes={sizes}
+                    sizes={sizesRender}
                     handleSizeAndQuantity={handleSizeAndQuantity}
                     optionDefault="Elige una talla"
                     addSize={addSize}

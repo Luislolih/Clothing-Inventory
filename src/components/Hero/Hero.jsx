@@ -1,5 +1,5 @@
 import StepSection from "../StepSection/StepSection";
-import styles from "./Hero.module.css";
+
 const steps = [
     {
         number: "1",
@@ -23,8 +23,8 @@ const steps = [
 
 const Hero = () => {
     return (
-        <div className={styles.principal}>
-            <aside className={styles.aside}>
+        <div className="principalAside">
+            <aside className="asideMenu">
                 {steps.map((step) => (
                     <StepSection
                         key={step.number}

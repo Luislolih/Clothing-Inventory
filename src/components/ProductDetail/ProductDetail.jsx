@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ProviderContext } from "../../Context/ProductContext";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import "./ProductDetail.css";
+import { Link } from "react-router-dom";
 const ProductDetail = ({ className }) => {
     const { name, cut, category, price, sizes, description, urlImage } =
         useContext(ProviderContext);
@@ -42,13 +43,14 @@ const ProductDetail = ({ className }) => {
                 <h2>Tallas: </h2>
                 <div className="flex items-center justify-between gap-3">
                     {sizes.map((size, index) => (
-                        <p>
+                        <p key={index}>
                             {size.name} : {size.quantity}
                         </p>
                     ))}
                 </div>
                 <h2>Descripción: </h2>
                 <p>{description}</p>
+                <Link to="/inventory/polos">go panel</Link>
             </div>
         </div>
     );
