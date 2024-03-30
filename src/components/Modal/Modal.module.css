@@ -1,0 +1,6 @@
+.modal {
+    @apply absolute bg-black opacity-75  w-full h-full;
+}
+.positionTen {
+    @apply z-10;
+}

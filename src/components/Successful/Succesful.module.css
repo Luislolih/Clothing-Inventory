@@ -1,5 +1,5 @@
 .container {
-    @apply flex items-center justify-center gap-2 p-2  text-white text-sm rounded-sm;
+    @apply flex items-center justify-center gap-2 p-2  text-white text-sm rounded-sm my-1;
 }
 .greenBg {
     @apply bg-green-500;

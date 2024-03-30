@@ -6,6 +6,8 @@ import SelectSize from "../SelectSize/SelectSize";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import Button from "../Button/Button";
 import Successful from "../Successful/Successful";
+import ConfirmationDelete from "../ConfirmationDelete/ConfirmationDelete";
+import Modal from "../Modal/Modal";
 const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
     const { productList, setProductList, cutList, categoryList, sizesList } =
         useContext(ProviderContext);
@@ -30,6 +32,7 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
     const [description, setDescription] = useState(defaultDescription);
     const [urlImage, setUrlImage] = useState(defaultUrlImage);
     const [showSuccess, setShowSuccess] = useState(false);
+    const [showConfirmationDelete, setShowConfirmationDelete] = useState(false);
     ///////////////////////
 
     const handleInputChange = (fieldName, value) => {
@@ -64,7 +67,9 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
         copySizes.splice(idx, 1);
         setSizes(copySizes);
     };
-
+    const confirmDeleteRender = () => {
+        setShowConfirmationDelete(!showConfirmationDelete);
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -103,14 +108,11 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
 
     return (
         <div className="absolute inset-0 flex justify-center items-center overflow-hidden">
-            <div
-                className="absolute bg-black opacity-75 z-10 w-full h-full"
-                onClick={closeProduct}
-            ></div>
+            <Modal onClick={closeProduct} position={true} />
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-white z-20 px-10 py-20 lg:px-20 lg:py-10 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3"
+                className="bg-white z-20 px-10 py-20 lg:px-20 lg:py-10 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3 "
             >
                 <Input
                     title="Nombre del producto"
@@ -150,46 +152,61 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
                     deleteSize={deleteSize}
                     handleSizeAndQuantity={handleSizeAndQuantity}
                 />
-                <Input
-                    title="Descripción"
-                    value={description}
-                    type="text"
-                    onChange={(e) =>
-                        handleInputChange("description", e.target.value)
-                    }
-                />
 
-                <ImageUpload
-                    value={urlImage}
-                    onChange={(e) =>
-                        handleInputChange("urlImage", e.target.value)
-                    }
-                />
-
-                {showSuccess && (
-                    <Successful
-                        title="¡Producto Actualizado Exitosamente!"
-                        color="green"
+                <div className="relative gap-3 flex flex-col">
+                    <Input
+                        title="Descripción"
+                        value={description}
+                        type="text"
+                        onChange={(e) =>
+                            handleInputChange("description", e.target.value)
+                        }
                     />
-                )}
-                <div className="flex justify-between items-center  gap-2">
-                    <Button
-                        type="button"
-                        className="z-30 bg-red-500 button w-1/3 my-2 h-full"
-                        onClick={closeProduct}
-                        title="Cancelar"
-                    ></Button>
-                    <Button
-                        type="button"
-                        className="z-30 bg-red-500 button w-1/3 my-2 h-full"
-                        onClick={deleteProduct}
-                        title="Borrar"
-                    ></Button>
-                    <Button
-                        type="submit"
-                        title="Editar producto"
-                        className=" bg-defaultColor button w-2/3 h-full"
-                    ></Button>
+
+                    <ImageUpload
+                        value={urlImage}
+                        onChange={(e) =>
+                            handleInputChange("urlImage", e.target.value)
+                        }
+                    />
+
+                    {showSuccess && (
+                        <Successful
+                            title="¡Producto Actualizado Exitosamente!"
+                            color="green"
+                        />
+                    )}
+
+                    {showConfirmationDelete && (
+                        <>
+                            <ConfirmationDelete
+                                title="¿Seguro que quieres eliminar el producto?"
+                                cancelDelete={confirmDeleteRender}
+                                deleteProduct={deleteProduct}
+                            />
+                        </>
+                    )}
+                    <div>
+                        <Button
+                            type="submit"
+                            title="Guardar cambios"
+                            className=" bg-defaultColor button whitespace-nowrap  w-full"
+                        ></Button>
+                        <div className="flex justify-between items-center gap-2  relative">
+                            <Button
+                                type="button"
+                                className="z-30 bg-gray-300 text-defaultColor button w-1/2  my-2 h-full"
+                                onClick={closeProduct}
+                                title="Cancelar"
+                            ></Button>
+                            <Button
+                                type="button"
+                                className="z-30 bg-red-500 button w-1/2 whitespace-nowrap my-2 h-full"
+                                onClick={confirmDeleteRender}
+                                title="Eliminar"
+                            ></Button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

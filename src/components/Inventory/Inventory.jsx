@@ -1,19 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProviderContext } from "../../Context/ProductContext";
 import { FiEdit } from "react-icons/fi";
 import ProductEdit from "../ProductEdit/ProductEdit";
 import Successful from "../Successful/Successful";
+import { MdDelete } from "react-icons/md";
 const Inventory = () => {
     const [showProducEdit, setShowProductEdit] = useState(false);
     const [showSuccessDelete, setShowSuccessDelete] = useState(false);
     const [idProduct, setIdProduct] = useState("");
+    const [idProductsList, setIdProductsList] = useState([]);
+    const [selectedItems, setSelectedItems] = useState(0);
     const { productList, setProductList } = useContext(ProviderContext);
     const { category } = useParams();
     const filteredProductsByCategory = productList.filter(
         (product) => product.category === category
     );
-    console.log(productList);
 
     const handleEdit = (id) => {
         setShowProductEdit(true);
@@ -23,10 +25,16 @@ const Inventory = () => {
         setShowProductEdit(false);
     };
     const deleteProduct = (id) => {
-        console.log(`este es el id: ${id}`);
-        const filteredProductsById = productList.filter(
-            (product) => product.id !== id
-        );
+        let filteredProductsById;
+        if (!Array.isArray(id)) {
+            filteredProductsById = productList.filter(
+                (product) => product.id !== id
+            );
+        } else {
+            filteredProductsById = id
+                .map((product) => product.id)
+                .filter((producto) => producto.id !== id);
+        }
         setProductList(filteredProductsById);
         setShowSuccessDelete(true);
         setShowProductEdit(false);
@@ -34,9 +42,39 @@ const Inventory = () => {
             setShowSuccessDelete(false);
         }, 2000);
     };
+    useEffect(() => {
+        console.log(idProductsList);
+    }, [idProductsList]);
+    const handleSelectedItems = (e) => {
+        let newArr;
+        if (e.target.checked === true) {
+            setSelectedItems(selectedItems + 1);
+            newArr = [...idProductsList];
+            newArr.push(e.target.value);
+        } else {
+            setSelectedItems(selectedItems - 1);
+
+            newArr = idProductsList.filter(
+                (productId) => productId !== e.target.value
+            );
+        }
+        setIdProductsList(newArr);
+    };
+
     return (
         <div className="w-full h-full flex justify-start inventoryMargin relative text-xs lg:text-sm">
             {!category && <>selecciona una categoría</>}
+            {selectedItems > 0 && (
+                <div
+                    className="w-full flex justify-end my-4 "
+                    onClick={deleteProduct}
+                >
+                    <div className="flex items-center gap-1 cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md">
+                        <MdDelete />
+                        <p>Eliminar </p>
+                    </div>
+                </div>
+            )}
 
             {showSuccessDelete && (
                 <Successful title="¡Producto(s) Eliminado(s)!" />
@@ -50,7 +88,7 @@ const Inventory = () => {
                 />
             )}
             {category && (
-                <div className="grid grid-cols-11 items-center text-center border border-gray-300 py-1 lg:py-2 ">
+                <div className="grid grid-cols-11 items-center text-center border border-gray-300 py-1 lg:py-2">
                     <p className="col-span-1">Imagen</p>
                     <p className="col-span-2">Nombre</p>
                     <p className="col-span-1">S</p>
@@ -107,6 +145,7 @@ const Inventory = () => {
                             type="checkbox"
                             value={product.id}
                             className="col-span-1"
+                            onChange={handleSelectedItems}
                         />
                     </div>
                 ))}
