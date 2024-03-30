@@ -5,7 +5,7 @@ import Select from "../Select/Select";
 import SelectSize from "../SelectSize/SelectSize";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import Button from "../Button/Button";
-
+import Successful from "../Successful/Successful";
 const ProductEdit = ({ id, closeProduct }) => {
     const { productList, setProductList, cutList, categoryList, sizesList } =
         useContext(ProviderContext);
@@ -59,22 +59,12 @@ const ProductEdit = ({ id, closeProduct }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const renderedSizeNames = sizes.map((size) => size.name);
 
-        const updatedSizes = sizes
-            .filter((size) => size.name)
-            .map((size) => {
-                if (
-                    size.quantity === 0 &&
-                    renderedSizeNames.includes(size.name)
-                ) {
-                    return sizes.find(
-                        (renderedSize) => renderedSize.name === size.name
-                    );
-                } else {
-                    return size;
-                }
-            });
+        const allSizes = sizesList.map((size) => ({ name: size, quantity: 0 }));
+        const updatedSizes = allSizes.map((size) => {
+            const existingSize = sizes.find((s) => s.name === size.name);
+            return existingSize ? existingSize : size;
+        });
 
         setSizes(updatedSizes);
         const newProduct = {
@@ -113,7 +103,7 @@ const ProductEdit = ({ id, closeProduct }) => {
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-white z-20 px-20 py-10 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3"
+                className="bg-white z-20 px-10 py-20 lg:px-20 lg:py-10 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3"
             >
                 <Input
                     title="Nombre del producto"
@@ -168,19 +158,22 @@ const ProductEdit = ({ id, closeProduct }) => {
                         handleInputChange("urlImage", e.target.value)
                     }
                 />
-                <div className="flex justify-between my-2">
+
+                {showSuccess && (
+                    <Successful title="¡Producto Actualizado Exitosamente!" />
+                )}
+                <div className="flex justify-between items-center  gap-2">
                     <Button
-                        className="z-30 bg-red-500 button"
+                        className="z-30 bg-red-500 button w-1/3 my-2 h-full"
                         onClick={closeProduct}
                         title="Cancelar"
                     ></Button>
                     <Button
                         type="submit"
                         title="Editar producto"
-                        className=" bg-defaultColor button"
+                        className=" bg-defaultColor button w-2/3 h-full"
                     ></Button>
                 </div>
-                {showSuccess && <p>¡Producto Actualizado Exitosamente!</p>}
             </form>
         </div>
     );

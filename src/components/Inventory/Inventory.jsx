@@ -22,13 +22,13 @@ const Inventory = () => {
         setShowProductEdit(false);
     };
     return (
-        <div className="w-full h-full flex justify-start inventoryMargin relative text-xs lg:text-md">
+        <div className="w-full h-full flex justify-start inventoryMargin relative text-xs lg:text-sm">
             {!category && <>selecciona una categoría</>}
             {showProducEdit && (
                 <ProductEdit id={idProduct} closeProduct={closeProductEdit} />
             )}
             {category && (
-                <div className="grid grid-cols-11 items-center text-center border border-gray-300 py-1 lg:py-2">
+                <div className="grid grid-cols-11 items-center text-center border border-gray-300 py-1 lg:py-2 ">
                     <p className="col-span-1">Imagen</p>
                     <p className="col-span-2">Nombre</p>
                     <p className="col-span-1">S</p>
@@ -70,16 +70,17 @@ const Inventory = () => {
                         ))}
 
                         {/* Cantidad Total */}
-                        <p className="col-span-1 flex justify-center ">
+                        <p className="col-span-1 flex justify-center">
                             {product.sizes.reduce(
                                 (acc, curr) => acc + +curr.quantity,
                                 0
                             )}
                         </p>
-                        <FiEdit
-                            onClick={() => handleEdit(product.id)}
-                            className="col-span-1 cursor-pointer"
-                        />
+                        {/* Icono Editar */}
+                        <div className="col-span-1 cursor-pointer flex justify-center items-center">
+                            <FiEdit onClick={() => handleEdit(product.id)} />
+                        </div>
+                        {/*  Select */}
                         <input
                             type="checkbox"
                             value={product.id}

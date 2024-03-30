@@ -16,7 +16,7 @@
     @apply flex flex-col justify-between gap-2 lg:gap-5;
 }
 .button {
-    @apply text-white px-5 py-3 rounded-lg w-full;
+    @apply text-white px-5 py-3 rounded-lg;
 }
 .icon {
     @apply border border-gray-400 hover:border-black w-8 h-8 rounded-sm p-1 cursor-pointer;

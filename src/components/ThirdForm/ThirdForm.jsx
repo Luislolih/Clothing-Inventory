@@ -113,13 +113,15 @@ const ThirdForm = () => {
                     </button>
                 </div>
             </div>
-            <Button
-                className=" bg-defaultColor button"
-                to="/add/details"
-                title="Anterior"
-                color="blue"
-                type="button"
-            />
+            <div className="flex items-start">
+                <Button
+                    className=" bg-defaultColor button"
+                    to="/add/details"
+                    title="Anterior"
+                    color="blue"
+                    type="button"
+                />
+            </div>
 
             {showDetail && (
                 <ProductDetail className="absolute top-0 bottom-0 lg:inset-0 flex justify-center items-center" />

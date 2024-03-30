@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-const Button = ({ to, title, onClick, onSubmit, type, className }) => {
-    return (
-        <Link to={to}>
-            <button
-                className={className}
-                type={type}
-                onClick={onClick}
-                onSubmit={onSubmit}
-            >
+const Button = ({ to, title, onClick, type, className }) => {
+    if (to) {
+        return (
+            <Link to={to} className={className}>
+                {title}
+            </Link>
+        );
+    } else {
+        return (
+            <button className={className} type={type} onClick={onClick}>
                 {title}
             </button>
-        </Link>
-    );
+        );
+    }
 };
 
 export default Button;
