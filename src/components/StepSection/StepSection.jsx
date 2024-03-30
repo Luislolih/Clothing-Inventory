@@ -3,24 +3,24 @@ import styles from "./StepSection.module.css";
 
 const StepSection = ({ number, step, stepVisible, title, to }) => {
     return (
-        <div className={styles.navLink}>
+        <NavLink to={to} className={styles.navLink}>
             <NavLink
                 to={to}
                 className={({ isActive }) => (isActive ? styles.isActive : "")}
             >
-                <p className={styles.number}>{number}</p>
+                <div className={styles.number}>{number}</div>
             </NavLink>
             <NavLink to={to}>
-                <div className="hover:text-gray-300 transition-all duration-75 hidden lg:block">
+                <div className="hover:text-gray-300 transition-all duration-75 hidden lg:block uppercase">
                     {stepVisible && (
                         <p className="text-sm hidden lg:block">
                             {step + number}
                         </p>
                     )}
-                    <p>{title}</p>
+                    <p className="text-lg">{title}</p>
                 </div>
             </NavLink>
-        </div>
+        </NavLink>
     );
 };
 

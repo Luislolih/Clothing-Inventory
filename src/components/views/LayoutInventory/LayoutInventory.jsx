@@ -3,7 +3,7 @@ import InventoryAside from "../../InventoryAside/InventoryAside";
 
 const LayoutInventory = () => {
     return (
-        <div className="lg:flex">
+        <div className="flex flex-col lg:flex-row h-screen ">
             <InventoryAside />
             <Outlet />
         </div>

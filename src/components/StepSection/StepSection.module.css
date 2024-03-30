@@ -7,5 +7,5 @@
     @apply bg-white text-defaultColor;
 }
 .navLink {
-    @apply lg:flex lg:items-center lg:gap-5;
+    @apply lg:flex lg:items-center lg:gap-5 lg:h-16 hover:bg-defaultBgColor cursor-pointer px-4 py-2;
 }

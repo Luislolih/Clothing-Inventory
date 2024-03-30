@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 const ProviderContext = createContext();
+import { PiTShirt, PiHoodieLight } from "react-icons/pi";
 const ProductContext = ({ children }) => {
     const [product, setProduct] = useState([]);
     const [productList, setProductList] = useState([
@@ -97,11 +98,13 @@ const ProductContext = ({ children }) => {
             name: "polos",
             id: 1,
             path: "polos",
+            icon: <PiTShirt />,
         },
         {
             name: "poleras",
             id: 2,
             path: "poleras",
+            icon: <PiHoodieLight />,
         },
     ]);
     const [cutList, setCutList] = useState([

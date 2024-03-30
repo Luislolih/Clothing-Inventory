@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                defaultColor: "#094095",
+                defaultColor: "#2F3349",
+                defaultBgColor: "#41455A",
             },
             spacing: { 30: "15rem", 40: "10rem" },
         },

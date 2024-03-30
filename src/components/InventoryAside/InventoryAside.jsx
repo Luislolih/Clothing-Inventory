@@ -14,7 +14,7 @@ const InventoryAside = () => {
                         title={category.name}
                         to={`/inventory/${category.path}`}
                         step="hola"
-                        number={category.id}
+                        number={category.icon}
                     />
                 ))}
             </aside>
