@@ -1,9 +1,14 @@
 import { IoMdCheckmark } from "react-icons/io";
-const Successful = ({ title }) => {
+import styles from "./Succesful.module.css";
+const Successful = ({ title, color }) => {
     return (
-        <div className="flex items-center justify-center gap-2 p-2 bg-green-500 text-white text-sm rounded-sm ">
+        <div
+            className={`${styles.container} ${
+                color === "green" ? styles.greenBg : styles.redBg
+            }`}
+        >
             <IoMdCheckmark />
-            <p className="">{title}</p>
+            <p>{title}</p>
         </div>
     );
 };

@@ -6,22 +6,30 @@ import SelectSize from "../SelectSize/SelectSize";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import Button from "../Button/Button";
 import Successful from "../Successful/Successful";
-const ProductEdit = ({ id, closeProduct }) => {
+const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
     const { productList, setProductList, cutList, categoryList, sizesList } =
         useContext(ProviderContext);
     const productFiltered = productList.filter((product) => product.id === id);
 
-    const [name, setName] = useState(productFiltered[0].name);
-    const [sizes, setSizes] = useState(productFiltered[0].sizes);
-    const [cut, setCut] = useState(productFiltered[0].cut);
-    const [category, setCategory] = useState(productFiltered[0].category);
-    const [price, setPrice] = useState(productFiltered[0].price);
-    const [description, setDescription] = useState(
-        productFiltered[0].description
-    );
-    const [urlImage, setUrlImage] = useState(productFiltered[0].urlImage);
-    const [showSuccess, setShowSuccess] = useState(false);
+    const initialProduct =
+        productFiltered.length > 0 ? productFiltered[0] : null;
 
+    const defaultName = initialProduct ? initialProduct.name : "";
+    const defaultSizes = initialProduct ? initialProduct.sizes : [];
+    const defaultCut = initialProduct ? initialProduct.cut : "";
+    const defaultCategory = initialProduct ? initialProduct.category : "";
+    const defaultPrice = initialProduct ? initialProduct.price : "";
+    const defaultDescription = initialProduct ? initialProduct.description : "";
+    const defaultUrlImage = initialProduct ? initialProduct.urlImage : "";
+
+    const [name, setName] = useState(defaultName);
+    const [sizes, setSizes] = useState(defaultSizes);
+    const [cut, setCut] = useState(defaultCut);
+    const [category, setCategory] = useState(defaultCategory);
+    const [price, setPrice] = useState(defaultPrice);
+    const [description, setDescription] = useState(defaultDescription);
+    const [urlImage, setUrlImage] = useState(defaultUrlImage);
+    const [showSuccess, setShowSuccess] = useState(false);
     ///////////////////////
 
     const handleInputChange = (fieldName, value) => {
@@ -93,7 +101,6 @@ const ProductEdit = ({ id, closeProduct }) => {
         setTimeout(() => closeProduct(false), 1500);
     };
 
-    console.log(sizes);
     return (
         <div className="absolute inset-0 flex justify-center items-center overflow-hidden">
             <div
@@ -160,13 +167,23 @@ const ProductEdit = ({ id, closeProduct }) => {
                 />
 
                 {showSuccess && (
-                    <Successful title="¡Producto Actualizado Exitosamente!" />
+                    <Successful
+                        title="¡Producto Actualizado Exitosamente!"
+                        color="green"
+                    />
                 )}
                 <div className="flex justify-between items-center  gap-2">
                     <Button
+                        type="button"
                         className="z-30 bg-red-500 button w-1/3 my-2 h-full"
                         onClick={closeProduct}
                         title="Cancelar"
+                    ></Button>
+                    <Button
+                        type="button"
+                        className="z-30 bg-red-500 button w-1/3 my-2 h-full"
+                        onClick={deleteProduct}
+                        title="Borrar"
                     ></Button>
                     <Button
                         type="submit"

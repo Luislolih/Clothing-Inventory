@@ -1,0 +1,9 @@
+.container {
+    @apply flex items-center justify-center gap-2 p-2  text-white text-sm rounded-sm;
+}
+.greenBg {
+    @apply bg-green-500;
+}
+.redBg {
+    @apply bg-red-500;
+}

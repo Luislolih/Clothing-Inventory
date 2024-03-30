@@ -3,29 +3,51 @@ import { useParams } from "react-router-dom";
 import { ProviderContext } from "../../Context/ProductContext";
 import { FiEdit } from "react-icons/fi";
 import ProductEdit from "../ProductEdit/ProductEdit";
+import Successful from "../Successful/Successful";
 const Inventory = () => {
     const [showProducEdit, setShowProductEdit] = useState(false);
+    const [showSuccessDelete, setShowSuccessDelete] = useState(false);
     const [idProduct, setIdProduct] = useState("");
-    const { productList } = useContext(ProviderContext);
+    const { productList, setProductList } = useContext(ProviderContext);
     const { category } = useParams();
-    const filteredProducts = productList.filter(
+    const filteredProductsByCategory = productList.filter(
         (product) => product.category === category
     );
     console.log(productList);
 
     const handleEdit = (id) => {
-        console.log(`estás editando el parámetro ${id}`);
         setShowProductEdit(true);
         setIdProduct(id);
     };
     const closeProductEdit = () => {
         setShowProductEdit(false);
     };
+    const deleteProduct = (id) => {
+        console.log(`este es el id: ${id}`);
+        const filteredProductsById = productList.filter(
+            (product) => product.id !== id
+        );
+        setProductList(filteredProductsById);
+        setShowSuccessDelete(true);
+        setShowProductEdit(false);
+        setTimeout(() => {
+            setShowSuccessDelete(false);
+        }, 2000);
+    };
     return (
         <div className="w-full h-full flex justify-start inventoryMargin relative text-xs lg:text-sm">
             {!category && <>selecciona una categoría</>}
+
+            {showSuccessDelete && (
+                <Successful title="¡Producto(s) Eliminado(s)!" />
+            )}
+
             {showProducEdit && (
-                <ProductEdit id={idProduct} closeProduct={closeProductEdit} />
+                <ProductEdit
+                    id={idProduct}
+                    closeProduct={closeProductEdit}
+                    deleteProduct={() => deleteProduct(idProduct)}
+                />
             )}
             {category && (
                 <div className="grid grid-cols-11 items-center text-center border border-gray-300 py-1 lg:py-2 ">
@@ -42,7 +64,7 @@ const Inventory = () => {
                 </div>
             )}
             <>
-                {filteredProducts.map((product) => (
+                {filteredProductsByCategory.map((product) => (
                     <div
                         key={product.id}
                         className="grid grid-cols-11 items-center border py-2  border-gray-300  -z-1"

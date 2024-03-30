@@ -4,7 +4,7 @@ import { ProviderContext } from "../../Context/ProductContext";
 
 const InventoryAside = () => {
     const { categoryList } = useContext(ProviderContext);
-    console.log(categoryList);
+
     return (
         <div className="principalAside">
             <aside className="asideMenu">
