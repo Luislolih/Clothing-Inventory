@@ -34,8 +34,8 @@ const NavBar = () => {
                     </Link>
                 </div>
             </nav>
-            <nav className="h-full text-white cursor-pointer">
-                {showMenu && (
+            {showMenu && (
+                <nav className="h-full text-white cursor-pointer">
                     <div className="bg-defaultColor absolute inset-0  flex flex-col items-center justify-start text-2xl pt-20 z-30">
                         <div className="self-end pr-12 mt-14">
                             <IoClose
@@ -55,8 +55,8 @@ const NavBar = () => {
                             </Link>
                         </div>
                     </div>
-                )}
-            </nav>
+                </nav>
+            )}
         </>
     );
 };
