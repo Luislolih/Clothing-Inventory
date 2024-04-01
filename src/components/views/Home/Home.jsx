@@ -5,7 +5,7 @@ import { SiGmail } from "react-icons/si";
 import NavBar from "../../NavBar/NavBar";
 const Home = () => {
     return (
-        <div className="flex flex-col items-center justify-start  h-screen">
+        <div className="flex flex-col items-center justify-start relative h-full">
             <NavBar />
             <p className="pt-10 w-5/6  text-defaultColor text-xl">
                 Bienvenido(a) a este mini sistema de inventario enfocado en
@@ -24,8 +24,7 @@ const Home = () => {
                     className=" bg-defaultColor hover:bg-defaultBgHover  button w-full h-40 lg:h-60 flex items-center justify-center"
                 />
             </div>
-            <footer className="flex flex-col  items-center gap-3 w-full bg-defaultColor text-white py-3 text-sm">
-                <p>Desarrollado por Luis Loli Huamanchumo. 👨‍💻</p>
+            <footer className="flex flex-col  items-center gap-2 w-full bg-defaultColor text-white py-5 lg:py-4 text-sm">
                 <div className="flex gap-1 items-center text-lg cursor-pointer">
                     <a
                         href="https://www.linkedin.com/in/luislolih/"
@@ -51,6 +50,7 @@ const Home = () => {
                         <FaGithubSquare />
                     </a>
                 </div>
+                <p>Desarrollado por Luis Loli Huamanchumo. 👨‍💻</p>
             </footer>
         </div>
     );
