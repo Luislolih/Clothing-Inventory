@@ -7,8 +7,7 @@ import Successful from "../Successful/Successful";
 import { MdDelete } from "react-icons/md";
 import ConfirmationDelete from "../ConfirmationDelete/ConfirmationDelete";
 import Modal from "../Modal/Modal";
-const Inventory = () => {
-    const [showProductEdit, setShowProductEdit] = useState(false);
+const Inventory = ({ showProductEdit, setShowProductEdit }) => {
     const [showDeleteProductConfirm, setShowDeleteProductConfirm] =
         useState(false);
     const [showSuccessDelete, setShowSuccessDelete] = useState(false);

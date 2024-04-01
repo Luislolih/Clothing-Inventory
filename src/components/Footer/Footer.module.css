@@ -1,0 +1,10 @@
+.footerMain {
+    @apply flex items-start justify-center gap-2 w-full bg-defaultColor text-white py-10 lg:py-5   text-sm;
+}
+
+.fixedApply {
+    @apply fixed bottom-0 lg:static;
+}
+.fixedNoApply {
+    @apply static;
+}

@@ -7,15 +7,33 @@ import ThirdForm from "./components/ThirdForm/ThirdForm";
 import Home from "./components/views/Home/Home";
 import LayoutInventory from "./components/views/LayoutInventory/LayoutInventory";
 import Inventory from "./components/Inventory/Inventory";
+import { useState } from "react";
 function App() {
+    const [showProductEdit, setShowProductEdit] = useState(false);
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
 
-                <Route path="inventory" element={<LayoutInventory />}>
+                <Route
+                    path="inventory"
+                    element={
+                        <LayoutInventory
+                            showProductEdit={showProductEdit}
+                            setShowProductEdit={setShowProductEdit}
+                        />
+                    }
+                >
                     <Route index element={<Inventory />} />
-                    <Route path=":category" element={<Inventory />} />
+                    <Route
+                        path=":category"
+                        element={
+                            <Inventory
+                                showProductEdit={showProductEdit}
+                                setShowProductEdit={setShowProductEdit}
+                            />
+                        }
+                    />
                 </Route>
 
                 <Route path="/add" element={<Layout />}>

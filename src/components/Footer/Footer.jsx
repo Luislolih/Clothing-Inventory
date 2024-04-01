@@ -1,10 +1,15 @@
+import styles from "./Footer.module.css";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-const Footer = () => {
+const Footer = ({ fixedApply }) => {
     return (
         <>
-            <footer className="flex items-start justify-center gap-2 w-full bg-defaultColor text-white py-10 lg:py-5   text-sm">
+            <footer
+                className={`${styles.footerMain} ${
+                    fixedApply ? styles.fixedApply : styles.fixedNoApply
+                }`}
+            >
                 <div className="w-5/6 flex flex-col lg:flex-row items-start gap-5 lg:gap-3 justify-between">
                     <div className="flex flex-col gap-2 w-2/4">
                         <h2 className="text-3xl">Clothing Inventory</h2>

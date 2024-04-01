@@ -3,7 +3,7 @@ import InventoryAside from "../../InventoryAside/InventoryAside";
 import NavBar from "../../NavBar/NavBar";
 import Footer from "../../Footer/Footer";
 
-const LayoutInventory = () => {
+const LayoutInventory = ({ showProductEdit }) => {
     return (
         <div className="flex flex-col h-screen relative ">
             <NavBar />
@@ -11,7 +11,7 @@ const LayoutInventory = () => {
                 <InventoryAside />
                 <Outlet />
             </div>
-            <Footer />
+            <Footer fixedApply={showProductEdit ? true : false} />
         </div>
     );
 };
