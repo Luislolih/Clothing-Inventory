@@ -21,6 +21,11 @@ const Inventory = () => {
         setShowProductEdit(true);
         setIdProduct(id);
     };
+    const handleDelete = () => {
+        deleteProduct(idProductsList);
+        setIdProductsList([]);
+        setSelectedItems(0);
+    };
     const closeProductEdit = () => {
         setShowProductEdit(false);
     };
@@ -30,44 +35,44 @@ const Inventory = () => {
             filteredProductsById = productList.filter(
                 (product) => product.id !== id
             );
+            console.log("entraste al if!!!!!!");
         } else {
-            filteredProductsById = id
-                .map((product) => product.id)
-                .filter((producto) => producto.id !== id);
+            filteredProductsById = productList.filter(
+                (product) => !id.includes(product.id)
+            );
+            console.log("entraste al ELSE!!!!!!");
         }
-        setProductList(filteredProductsById);
+        setProductList([...filteredProductsById]);
         setShowSuccessDelete(true);
         setShowProductEdit(false);
         setTimeout(() => {
             setShowSuccessDelete(false);
         }, 2000);
     };
-    useEffect(() => {
-        console.log(idProductsList);
-    }, [idProductsList]);
+    useEffect(() => {}, [idProductsList]);
     const handleSelectedItems = (e) => {
         let newArr;
         if (e.target.checked === true) {
             setSelectedItems(selectedItems + 1);
             newArr = [...idProductsList];
-            newArr.push(e.target.value);
+            newArr.push(parseInt(e.target.value));
         } else {
             setSelectedItems(selectedItems - 1);
 
             newArr = idProductsList.filter(
-                (productId) => productId !== e.target.value
+                (productId) => productId !== parseInt(e.target.value)
             );
         }
         setIdProductsList(newArr);
     };
-
+    console.log(idProductsList);
     return (
         <div className="w-full h-full flex justify-start inventoryMargin relative text-xs lg:text-sm">
             {!category && <>selecciona una categoría</>}
             {selectedItems > 0 && (
                 <div
                     className="w-full flex justify-end my-4 "
-                    onClick={deleteProduct}
+                    onClick={handleDelete}
                 >
                     <div className="flex items-center gap-1 cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md">
                         <MdDelete />

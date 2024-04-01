@@ -6,7 +6,7 @@ const ProductContext = ({ children }) => {
     const [productList, setProductList] = useState([
         {
             id: 1,
-            name: "Polo White",
+            name: "Polo Melange",
             cut: "clásico",
             category: "polos",
             price: 50,
@@ -31,7 +31,7 @@ const ProductContext = ({ children }) => {
                 { name: "Única", quantity: 50 },
             ],
             description: "Polo de algodón jersey 30/1",
-            urlImage: "http://bit.ly/3VAocMN",
+            urlImage: "https://bit.ly/4akXJHF",
         },
         {
             id: 2,
