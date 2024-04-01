@@ -8,7 +8,7 @@ export default {
                 defaultBgColor: "#41455A",
                 defaultBgHover: "#4C5584",
             },
-            spacing: { 30: "15rem", 40: "10rem" },
+            spacing: { 25: "7.5rem", 30: "10rem", 40: "15rem" },
         },
     },
     plugins: [],

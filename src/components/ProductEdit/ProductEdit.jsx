@@ -113,7 +113,7 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-white z-20 px-10 py-20 lg:px-20 lg:py-10 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3 "
+                className="bg-white z-20 px-10 py-25 lg:px-20 lg:py-20 max-w-md overflow-y-auto rounded-lg h-screen flex flex-col gap-3 "
             >
                 <Input
                     title="Nombre del producto"
