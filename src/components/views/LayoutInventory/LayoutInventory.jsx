@@ -4,7 +4,7 @@ import NavBar from "../../NavBar/NavBar";
 
 const LayoutInventory = () => {
     return (
-        <div className="flex flex-col h-screen ">
+        <div className="flex flex-col h-screen relative ">
             <NavBar />
             <div className="flex flex-col lg:flex-row h-full">
                 <InventoryAside />
