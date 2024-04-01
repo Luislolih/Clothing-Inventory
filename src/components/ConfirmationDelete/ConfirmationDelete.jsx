@@ -9,7 +9,7 @@ const ConfirmationDelete = ({
     return (
         <div className={className}>
             <p>{title}</p>
-            <div className="w-full flex flex-col gap-3 text-sm">
+            <div className="w-full flex flex-col gap-3 text-sm  items-center">
                 <Button
                     type="button"
                     className="z-30 bg-red-500 button w-full "

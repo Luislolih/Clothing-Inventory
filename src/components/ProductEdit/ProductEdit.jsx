@@ -187,7 +187,7 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
                     {showConfirmationDelete && (
                         <>
                             <ConfirmationDelete
-                                className="modalClass bottom-0"
+                                className="modalClass bottom-0 modalSec"
                                 title="¿Seguro que quieres eliminar el producto?"
                                 cancelDelete={confirmDeleteRender}
                                 deleteProduct={deleteProduct}

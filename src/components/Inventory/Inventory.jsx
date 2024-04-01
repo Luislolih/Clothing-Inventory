@@ -81,7 +81,7 @@ const Inventory = () => {
             {showDeleteProductConfirm && (
                 <div>
                     <ConfirmationDelete
-                        className="modalClass top-60  right-80"
+                        className="modalClass modalPrincipal"
                         title="¿Estás seguro de eliminar los productos?"
                         cancelDelete={handleShowDeleteProduct}
                         deleteProduct={handleDelete}
@@ -90,7 +90,7 @@ const Inventory = () => {
             )}
 
             {!category && (
-                <div className="text-lg lg:text-xl text-defaultColor flex  flex-col gap-5">
+                <div className="text-lg lg:text-xl text-defaultColor flex  flex-col gap-5 p-6 lg:p-8">
                     <h1 className="text-2xl lg:text-3xl">¡Bienvenido(a)! </h1>
                     <h2>
                         En esta sección podrás ver los productos disponibles en
@@ -102,16 +102,18 @@ const Inventory = () => {
 
             {/* aaaaaaaaaaaaaaa */}
             <div className="px-3 lg:px-6 lg:py-3">
-                <div className="w-full flex justify-end my-4 ">
-                    <button
-                        onClick={handleShowDeleteProduct}
-                        className="flex items-center gap-1 cursor-pointer px-4 py-2  text-white rounded-md buttonDlt"
-                        disabled={selectedItems < 1}
-                    >
-                        <MdDelete />
-                        <p>Eliminar </p>
-                    </button>
-                </div>
+                {category && (
+                    <div className="w-full flex justify-end my-4 ">
+                        <button
+                            onClick={handleShowDeleteProduct}
+                            className="flex items-center gap-1 cursor-pointer px-4 py-2  text-white rounded-md buttonDlt"
+                            disabled={selectedItems < 1}
+                        >
+                            <MdDelete />
+                            <p>Eliminar </p>
+                        </button>
+                    </div>
+                )}
 
                 {showSuccessDelete && (
                     <Successful title="¡Producto(s) Eliminado(s)!" />
