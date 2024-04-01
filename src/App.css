@@ -28,7 +28,7 @@
     @apply lg:h-screen;
 }
 .asideMenu {
-    @apply flex justify-center lg:justify-start  shadow-lg py-2 lg:py-10 bg-defaultColor text-white  lg:flex-col lg:w-80  lg:h-full;
+    @apply flex justify-center lg:justify-start  lg:shadow-lg py-5 lg:py-5 text-white  lg:flex-col lg:w-80  lg:h-full;
 }
 .modalClass {
     @apply absolute z-40 bg-defaultColor text-white  flex flex-col gap-3 px-8 py-5 rounded-md items-center justify-center text-center shadow-xl text-sm lg:text-lg w-1/2;

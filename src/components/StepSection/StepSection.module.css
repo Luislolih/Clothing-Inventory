@@ -1,11 +1,10 @@
-.number,
-.isActive {
-    @apply flex items-center justify-center rounded-full h-12 w-12 lg:h-8 lg:w-8 border border-white text-xl lg:text-lg cursor-pointer;
+.number {
+    @apply flex items-center justify-center rounded-full h-12 w-12 lg:h-8 lg:w-8 border border-defaultColor lg:border-defaultColor text-defaultColor lg:text-defaultColor text-xl lg:text-lg cursor-pointer;
 }
 
-.isActive {
-    @apply bg-white text-defaultColor;
-}
 .navLink {
-    @apply lg:flex lg:items-center lg:gap-5 lg:h-16 hover:bg-defaultBgColor cursor-pointer px-4 py-2;
+    @apply lg:flex lg:items-center lg:gap-5 lg:h-16 lg:hover:bg-gray-200 cursor-pointer px-4 py-2 text-defaultColor;
+}
+.isActive {
+    @apply lg:flex lg:items-center lg:gap-5 lg:h-16 lg:bg-gray-200 text-defaultColor cursor-pointer px-4 py-2;
 }

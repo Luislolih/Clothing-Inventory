@@ -95,7 +95,7 @@ const Inventory = () => {
                     <h2>
                         En esta sección podrás ver los productos disponibles en
                         tu inventario y gestionarlos. <br /> Selecciona una
-                        categoría. 📲{" "}
+                        categoría.{" "}
                     </h2>
                 </div>
             )}
