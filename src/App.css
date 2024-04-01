@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
 }
 .formMargin {
     @apply flex flex-col px-5 py-8 lg:px-20 lg:py-12 w-full justify-between h-full gap-2 lg:gap-0 overflow-auto;
@@ -28,8 +29,9 @@
     @apply lg:h-full;
 }
 .asideMenu {
-    @apply flex justify-center lg:justify-start  lg:shadow-lg py-5 lg:py-5 text-white  lg:flex-col lg:w-80  lg:h-full;
+    @apply flex justify-center lg:justify-start shadow-md  py-3 lg:py-5 text-white  lg:flex-col lg:w-40  lg:h-screen;
 }
+
 .modalClass {
     @apply absolute z-40 bg-defaultColor text-white  flex flex-col gap-3 px-8 py-5 rounded-md items-center justify-center text-center shadow-xl text-sm lg:text-lg w-1/2;
 }
@@ -40,6 +42,9 @@
 @media screen and (min-width: 1024px) {
     .modalPrincipal {
         transform: translate(50%, 0%);
+    }
+    .asideMenu {
+        box-shadow: 5px 0 5px -3px rgba(0, 0, 0, 0.2);
     }
 }
 .modalSec {

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import InventoryAside from "../../InventoryAside/InventoryAside";
 import NavBar from "../../NavBar/NavBar";
+import Footer from "../../Footer/Footer";
 
 const LayoutInventory = () => {
     return (
@@ -10,6 +11,7 @@ const LayoutInventory = () => {
                 <InventoryAside />
                 <Outlet />
             </div>
+            <Footer />
         </div>
     );
 };

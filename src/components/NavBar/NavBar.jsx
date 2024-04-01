@@ -12,26 +12,28 @@ const NavBar = () => {
     console.log(showMenu);
     return (
         <>
-            <nav className="flex justify-between items-center p-5 lg:justify-between lg:px-20 lg:py-6 shadow-xl text-white bg-defaultColor text-sm w-full">
-                <Link
-                    to="/"
-                    className="flex items-center gap-1 text-xl cursor-pointer"
-                >
-                    <MdOutlineInventory className="text-3xl" />
-                    <p>INVENTORY</p>
-                </Link>
+            <nav className="flex  items-center py-5 justify-center shadow-xl text-white bg-defaultColor text-sm w-full">
+                <div className="w-5/6 flex items-center justify-between">
+                    <Link
+                        to="/"
+                        className="flex items-center gap-1 text-xl cursor-pointer"
+                    >
+                        <MdOutlineInventory className="text-3xl" />
+                        <p>INVENTORY</p>
+                    </Link>
 
-                <RiMenu2Fill
-                    className="lg:hidden text-xl cursor-pointer"
-                    onClick={handleShowMenu}
-                />
-                <div className="gap-10 hidden lg:flex">
-                    <Link to="/inventory" className="cursor-pointer">
-                        VER INVENTARIO
-                    </Link>
-                    <Link to="/add" className="cursor-pointer">
-                        AGREGAR PRODUCTO
-                    </Link>
+                    <RiMenu2Fill
+                        className="lg:hidden text-xl cursor-pointer"
+                        onClick={handleShowMenu}
+                    />
+                    <div className="gap-10 hidden lg:flex">
+                        <Link to="/inventory" className="cursor-pointer">
+                            VER INVENTARIO
+                        </Link>
+                        <Link to="/add" className="cursor-pointer">
+                            AGREGAR PRODUCTO
+                        </Link>
+                    </div>
                 </div>
             </nav>
             {showMenu && (
