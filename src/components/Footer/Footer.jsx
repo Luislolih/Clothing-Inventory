@@ -4,7 +4,7 @@ import { SiGmail } from "react-icons/si";
 const Footer = () => {
     return (
         <>
-            <footer className="flex items-start justify-center gap-2 w-full bg-defaultColor text-white py-10 lg:py-5   text-sm">
+            <footer className="flex items-start justify-center gap-2 w-full bg-defaultColor text-white py-10 lg:py-5   text-sm fixed lg:static bottom-0">
                 <div className="w-5/6 flex flex-col lg:flex-row items-start gap-5 lg:gap-3 justify-between">
                     <div className="flex flex-col gap-2 w-2/4">
                         <h2 className="text-3xl">Clothing Inventory</h2>
