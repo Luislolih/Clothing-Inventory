@@ -34,7 +34,13 @@
     @apply absolute z-40 bg-defaultColor text-white  flex flex-col gap-3 px-8 py-5 rounded-md items-center justify-center text-center shadow-xl text-sm lg:text-lg w-1/2;
 }
 .modalPrincipal {
-    transform: translate(50%, 100%);
+    top: 40%;
+    @apply w-full lg:w-1/2;
+}
+@media screen and (min-width: 1024px) {
+    .modalPrincipal {
+        transform: translate(50%, 0%);
+    }
 }
 .modalSec {
     @apply w-full;
