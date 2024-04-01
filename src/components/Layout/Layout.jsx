@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 
 const Layout = () => {
     return (
-        <div className="relative">
+        <div className="relative h-full">
             <NavBar />
             <div className="lg:flex">
                 <Hero></Hero>

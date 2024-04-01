@@ -35,7 +35,7 @@ const NavBar = () => {
                 </div>
             </nav>
             {showMenu && (
-                <nav className="h-full text-white cursor-pointer">
+                <nav className="h-screen text-white cursor-pointer  absolute inset-0">
                     <div className="bg-defaultColor absolute inset-0  flex flex-col items-center justify-start text-2xl pt-20 z-30">
                         <div className="self-end pr-12 mt-14">
                             <IoClose
