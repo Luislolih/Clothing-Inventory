@@ -6,7 +6,7 @@ const LayoutInventory = () => {
     return (
         <div className="flex flex-col h-screen ">
             <NavBar />
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:flex-row h-full">
                 <InventoryAside />
                 <Outlet />
             </div>

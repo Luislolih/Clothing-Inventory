@@ -20,7 +20,7 @@ const NavBar = () => {
                 <p>INVENTORY</p>
             </Link>
             {showMenu && (
-                <div className="bg-defaultColor absolute inset-0 h-full flex flex-col items-center justify-start text-2xl pt-20">
+                <div className="bg-defaultColor absolute inset-0  flex flex-col items-center justify-start text-2xl pt-20 z-30">
                     <div className="self-end pr-12 mt-14">
                         <IoClose
                             className="text-4xl"
