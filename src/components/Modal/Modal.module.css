@@ -4,3 +4,6 @@
 .positionTen {
     @apply z-10;
 }
+.positionLittle {
+    @apply px-10 py-20 z-20;
+}

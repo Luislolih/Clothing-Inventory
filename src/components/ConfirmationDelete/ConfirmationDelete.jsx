@@ -1,8 +1,13 @@
 import Button from "../Button/Button";
 
-const ConfirmationDelete = ({ title, cancelDelete, deleteProduct }) => {
+const ConfirmationDelete = ({
+    title,
+    cancelDelete,
+    deleteProduct,
+    className,
+}) => {
     return (
-        <div className="absolute z-40 inset-0 bg-defaultColor text-white  flex flex-col gap-5 px-10  rounded-md items-center justify-center w-full shadow-xl text-lg">
+        <div className={className}>
             <p>{title}</p>
             <div className="w-full flex flex-col gap-3 text-sm">
                 <Button

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { ProviderContext } from "../../Context/ProductContext";
+import preview from "./preview.jpg";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import SelectSize from "../SelectSize/SelectSize";
@@ -153,23 +154,29 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
                     handleSizeAndQuantity={handleSizeAndQuantity}
                 />
 
+                <Input
+                    title="Descripción"
+                    value={description}
+                    type="text"
+                    onChange={(e) =>
+                        handleInputChange("description", e.target.value)
+                    }
+                />
+
+                <ImageUpload
+                    value={urlImage}
+                    onChange={(e) =>
+                        handleInputChange("urlImage", e.target.value)
+                    }
+                />
+                <div className="flex flex-col gap-2.5">
+                    <p>VISTA PREVIA:</p>
+                    <img
+                        src={urlImage ? urlImage : preview}
+                        className="w-full border border-gray-400 rounded-md "
+                    />
+                </div>
                 <div className="relative gap-3 flex flex-col">
-                    <Input
-                        title="Descripción"
-                        value={description}
-                        type="text"
-                        onChange={(e) =>
-                            handleInputChange("description", e.target.value)
-                        }
-                    />
-
-                    <ImageUpload
-                        value={urlImage}
-                        onChange={(e) =>
-                            handleInputChange("urlImage", e.target.value)
-                        }
-                    />
-
                     {showSuccess && (
                         <Successful
                             title="¡Producto Actualizado Exitosamente!"
@@ -180,6 +187,7 @@ const ProductEdit = ({ id, closeProduct, deleteProduct }) => {
                     {showConfirmationDelete && (
                         <>
                             <ConfirmationDelete
+                                className="modalClass bottom-0"
                                 title="¿Seguro que quieres eliminar el producto?"
                                 cancelDelete={confirmDeleteRender}
                                 deleteProduct={deleteProduct}

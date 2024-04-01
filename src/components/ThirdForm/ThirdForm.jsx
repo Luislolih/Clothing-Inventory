@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { ProviderContext } from "../../Context/ProductContext";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import preview from "./preview.jpg";
 import Button from "../Button/Button";
 import { v4 as uuidv4 } from "uuid";
 const ThirdForm = () => {
@@ -104,6 +105,13 @@ const ThirdForm = () => {
         <form className="z-0 formMargin relative" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-5 lg:gap-10">
                 <ImageUpload value={urlImage} onChange={handleUrl} />
+                <div className="flex flex-col gap-2.5">
+                    <p>VISTA PREVIA:</p>
+                    <img
+                        src={urlImage ? urlImage : preview}
+                        className="w-full lg:w-1/4 border border-gray-400 rounded-md "
+                    />
+                </div>
                 <div className="flex justify-center">
                     <button
                         type="submit"
@@ -113,6 +121,7 @@ const ThirdForm = () => {
                     </button>
                 </div>
             </div>
+
             <div className="flex items-start">
                 <Button
                     className=" bg-defaultColor button"

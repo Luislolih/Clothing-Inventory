@@ -6,6 +6,7 @@ export default {
             colors: {
                 defaultColor: "#2F3349",
                 defaultBgColor: "#41455A",
+                defaultBgHover: "#4C5584",
             },
             spacing: { 30: "15rem", 40: "10rem" },
         },
