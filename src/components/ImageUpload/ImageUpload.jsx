@@ -1,6 +1,6 @@
 import Input from "../Input/Input";
 
-const ImageUpload = ({ value, onChange }) => {
+const ImageUpload = ({ value, onChange, onBlur, errors }) => {
     return (
         <div className="w-full">
             <Input
@@ -9,6 +9,8 @@ const ImageUpload = ({ value, onChange }) => {
                 value={value}
                 type="text"
                 onChange={onChange}
+                onBlur={onBlur}
+                errors={errors}
             />
         </div>
     );

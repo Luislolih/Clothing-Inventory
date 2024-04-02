@@ -6,7 +6,7 @@ const steps = [
     {
         number: "1",
         step: "PASO ",
-        title: "INFORMACIÓN BÁSICA",
+        title: "INFORMACIÓN",
         path: "/add/basic-information",
         icon: <MdOutlineNewLabel />,
     },

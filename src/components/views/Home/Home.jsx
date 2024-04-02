@@ -6,12 +6,12 @@ const Home = () => {
     return (
         <div className="flex flex-col items-center justify-start relative h-full">
             <NavBar />
-            <p className="pt-10 w-5/6  text-defaultColor text-xl">
+            <p className="pt-10 px-5 w-full  text-defaultColor text-xl">
                 Bienvenido(a) a este mini sistema de inventario enfocado en
                 marcas/tiendas de ropa, en el cual podrás crear, editar y
                 eliminar tus productos.{" "}
             </p>
-            <div className="flex flex-col lg:flex-row  items-center justify-center text-center gap-3 lg:gap-2 py-14 lg:py-10 w-5/6 lg:w-5/6 h-full text-xl">
+            <div className="flex flex-col lg:flex-row  items-center justify-center text-center gap-3 lg:gap-2 py-14 px-5 lg:py-10 w-full lg:w-5/6 h-full text-xl">
                 <Button
                     to="/inventory"
                     title="VER INVENTARIO"

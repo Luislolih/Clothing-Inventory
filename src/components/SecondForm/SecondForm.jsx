@@ -1,7 +1,7 @@
 import { ProviderContext } from "../../Context/ProductContext";
 import Input from "../Input/Input";
 import SelectSize from "../SelectSize/SelectSize";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Button from "../Button/Button";
 const SecondForm = () => {
     const {
@@ -10,8 +10,20 @@ const SecondForm = () => {
         setDescription,
         sizesRender,
         setSizesRender,
+        errors,
+        setErrors,
     } = useContext(ProviderContext);
+    useEffect(() => {
+        setErrors((prevErrors) => {
+            const newErrors = { ...prevErrors };
 
+            if (description.trim()) {
+                delete newErrors.description;
+            }
+
+            return newErrors;
+        });
+    }, [description]);
     const handleSizeAndQuantity = (selectedSize, quantity, idx) => {
         const newSize = { name: selectedSize, quantity: quantity };
         const updatedSizes = [...sizesRender];
@@ -37,6 +49,17 @@ const SecondForm = () => {
         setSizesRender(copySizes);
     };
 
+    const handleBlur = (fieldName) => {
+        if (fieldName === "description") {
+            if (!description.trim()) {
+                setErrors({
+                    ...errors,
+                    description: "Debes ingresar una descripción",
+                });
+            }
+        }
+    };
+
     return (
         <div className="formMargin">
             <div className="formContainerTop">
@@ -57,6 +80,8 @@ const SecondForm = () => {
                     onChange={(e) =>
                         handleInputChange("description", e.target.value)
                     }
+                    onBlur={() => handleBlur("description")}
+                    errors={errors.description}
                 />
             </div>
             <div className="flex w-full justify-between mt-5 ">

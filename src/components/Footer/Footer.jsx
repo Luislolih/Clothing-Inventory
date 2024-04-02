@@ -10,7 +10,7 @@ const Footer = ({ fixedApply }) => {
                     fixedApply ? styles.fixedApply : styles.fixedNoApply
                 }`}
             >
-                <div className="w-5/6 flex flex-col lg:flex-row items-start gap-5 lg:gap-3 justify-between">
+                <div className="w-full px-5 flex flex-col lg:flex-row items-start gap-5 lg:gap-3 justify-between">
                     <div className="flex flex-col gap-2 w-2/4">
                         <h2 className="text-3xl">Clothing Inventory</h2>
                         <p className="text-lg">

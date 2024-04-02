@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 const ProviderContext = createContext();
 import { PiTShirt, PiHoodieLight } from "react-icons/pi";
 const ProductContext = ({ children }) => {
+    const [errors, setErrors] = useState([]);
     const [product, setProduct] = useState([]);
     const [productList, setProductList] = useState([
         {
@@ -146,6 +147,8 @@ const ProductContext = ({ children }) => {
     return (
         <ProviderContext.Provider
             value={{
+                errors,
+                setErrors,
                 productList,
                 setProductList,
                 sizesList,
@@ -166,7 +169,6 @@ const ProductContext = ({ children }) => {
                 setPrice,
                 sizes,
                 setSizes,
-
                 description,
                 setDescription,
                 urlImage,

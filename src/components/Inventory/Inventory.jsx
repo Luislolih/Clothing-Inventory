@@ -52,17 +52,29 @@ const Inventory = ({ showProductEdit, setShowProductEdit }) => {
         }, 2000);
     };
     useEffect(() => {}, [idProductsList]);
+    function esUUID(str) {
+        const uuidPattern =
+            /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        return uuidPattern.test(str);
+    }
+
     const handleSelectedItems = (e) => {
         let newArr;
+        const value = e.target.value;
+
         if (e.target.checked === true) {
             setSelectedItems(selectedItems + 1);
             newArr = [...idProductsList];
-            newArr.push(parseInt(e.target.value));
+            if (!esUUID(value)) {
+                newArr.push(parseInt(value));
+            } else {
+                newArr.push(value);
+            }
         } else {
             setSelectedItems(selectedItems - 1);
-
             newArr = idProductsList.filter(
-                (productId) => productId !== parseInt(e.target.value)
+                (productId) =>
+                    productId !== parseInt(value) && productId !== value
             );
         }
         setIdProductsList(newArr);
@@ -99,8 +111,7 @@ const Inventory = ({ showProductEdit, setShowProductEdit }) => {
                 </div>
             )}
 
-            {/* aaaaaaaaaaaaaaa */}
-            <div className="px-3 lg:px-6 lg:py-3">
+            <div className="px-5 lg:px-6 lg:py-3">
                 {category && (
                     <div className="w-full flex justify-end my-4 ">
                         <button

@@ -19,6 +19,12 @@
 .button {
     @apply text-white px-5 py-3 rounded-lg;
 }
+.buttonRed {
+    @apply mb-5 lg:m-0 text-white px-5 py-3 rounded-lg;
+}
+.buttonRed[disabled] {
+    @apply bg-red-300 cursor-not-allowed;
+}
 .icon {
     @apply border border-gray-400 hover:border-black w-8 h-8 rounded-sm p-1 cursor-pointer;
 }

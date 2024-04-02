@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { ProviderContext } from "../../Context/ProductContext";
 import ProductDetail from "../ProductDetail/ProductDetail";
@@ -6,6 +6,8 @@ import preview from "./preview.jpg";
 import Button from "../Button/Button";
 import { v4 as uuidv4 } from "uuid";
 const ThirdForm = () => {
+    const patronURL = /^(https?:\/\/)?[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+
     const id = uuidv4();
     const [showDetail, setShowDetail] = useState(false);
     const {
@@ -29,10 +31,29 @@ const ThirdForm = () => {
         setUrlImage,
         productList,
         setProductList,
+        errors,
+        setErrors,
     } = useContext(ProviderContext);
-
+    const handleBlur = (fieldName) => {
+        if (fieldName === "urlImage") {
+            if (!urlImage.trim()) {
+                setErrors({
+                    ...errors,
+                    urlImage: "Debes ingresar el URL de la Imagen",
+                });
+            } else if (!patronURL.test(urlImage)) {
+                setErrors({
+                    ...errors,
+                    urlImage: "El enlace de la imagen es incorrecto",
+                });
+            }
+        }
+    };
     const handleUrl = (e) => {
         setUrlImage(e.target.value);
+        if (patronURL.test(urlImage)) {
+            setErrors({ ...errors, urlImage: "" });
+        }
     };
 
     const handleSubmit = (e) => {
@@ -100,11 +121,26 @@ const ThirdForm = () => {
             setUrlImage("");
         }, 5000);
     };
-    console.log(product);
+    useEffect(() => {
+        setErrors((prevErrors) => {
+            const newErrors = { ...prevErrors };
+
+            if (urlImage.trim()) {
+                delete newErrors.urlImage;
+            }
+
+            return newErrors;
+        });
+    }, [urlImage]);
     return (
         <form className="z-0 formMargin relative" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-5 lg:gap-10">
-                <ImageUpload value={urlImage} onChange={handleUrl} />
+                <ImageUpload
+                    value={urlImage}
+                    onChange={handleUrl}
+                    onBlur={() => handleBlur("urlImage")}
+                    errors={errors.urlImage}
+                />
                 <div className="flex flex-col gap-2.5">
                     <p>VISTA PREVIA:</p>
                     <img
@@ -115,7 +151,16 @@ const ThirdForm = () => {
                 <div className="flex justify-center">
                     <button
                         type="submit"
-                        className="button bg-red-500 mb-5 lg:m-0"
+                        className="buttonRed bg-red-500"
+                        disabled={
+                            !name ||
+                            !cut ||
+                            !category ||
+                            !price ||
+                            !description ||
+                            !urlImage ||
+                            Object.keys(errors).length !== 0
+                        }
                     >
                         Crear producto
                     </button>

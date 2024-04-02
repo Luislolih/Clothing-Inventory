@@ -12,8 +12,8 @@ const NavBar = () => {
     console.log(showMenu);
     return (
         <>
-            <nav className="flex  items-center py-5 justify-center shadow-xl text-white bg-defaultColor text-sm w-full">
-                <div className="w-5/6 flex items-center justify-between">
+            <nav className="flex  items-center px-5 py-5 justify-center shadow-xl text-white bg-defaultColor text-sm w-full">
+                <div className="w-full flex items-center justify-between">
                     <Link
                         to="/"
                         className="flex items-center gap-1 text-xl cursor-pointer"
